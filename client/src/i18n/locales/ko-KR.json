@@ -1,0 +1,284 @@
+{
+  "common": {
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "편집",
+    "add": "추가",
+    "search": "검색",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "success": "성공",
+    "confirm": "확인",
+    "back": "뒤로",
+    "next": "다음",
+    "finish": "완료",
+    "close": "닫기"
+  },
+  "nav": {
+    "dashboard": "대시보드",
+    "accounts": "계정",
+    "trades": "거래",
+    "analytics": "분석",
+    "copyTrading": "카피 트레이딩",
+    "traders": "트레이더",
+    "strategies": "전략",
+    "calendar": "캘린더",
+    "alerts": "알림",
+    "subscriptions": "구독",
+    "vps": "VPS",
+    "myVMs": "내 VM",
+    "expertAdvisors": "전문가 자문",
+    "settings": "설정",
+    "admin": "관리자",
+    "support": "지원 채팅"
+  },
+  "alerts": {
+    "title": "알림 및 공지",
+    "subtitle": "푸시 알림을 설정하고 시스템 알림을 관리하세요",
+    "config": "알림 설정",
+    "drawdown": "드로우다운 알림",
+    "drawdownDesc": "드로우다운이 한도에 도달하면 알림을 받으세요",
+    "trades": "거래 알림",
+    "tradesDesc": "거래 개시 및 종료에 대한 알림",
+    "connection": "연결 알림",
+    "connectionDesc": "MT4/MT5 연결이 끊어졌을 때 알림",
+    "drawdownLimit": "드로우다운 한도",
+    "drawdownLimitDesc": "알림 전 최대 드로우다운 비율",
+    "ntfyTitle": "ntfy.sh 알림(Android + iPhone)",
+    "ntfyDesc": "무료 ntfy 앱을 사용하여 휴대폰(Android 또는 iPhone)에서 즉시 푸시 알림을 받으세요.",
+    "yourTopic": "고유 주제:",
+    "howToConfig": "설정 방법:",
+    "step1": "1. 휴대폰에 \"ntfy\" 앱을 설치하세요",
+    "step2": "2. 앱을 열고 \"+\"를 클릭하세요",
+    "step3": "3. 위의 주제를 입력하세요",
+    "step4": "4. 완료! 여기서 알림을 받게 됩니다",
+    "enableNotifications": "알림 활성화",
+    "enableNotificationsDesc": "모든 ntfy 알림 활성화",
+    "dailySummary": "일일 요약",
+    "dailySummaryDesc": "당일 수익, 거래 및 승률",
+    "weeklySummary": "주간 요약",
+    "weeklySummaryDesc": "토요일: 일요일부터 금요일까지 요약",
+    "time": "시간:",
+    "testDaily": "일일 요약 테스트",
+    "testWeekly": "주간 요약 테스트",
+    "sendTest": "테스트 알림 보내기",
+    "saveSettings": "설정 저장",
+    "history": "알림 기록",
+    "noAlerts": "등록된 알림이 없습니다",
+    "enabled": "활성화됨",
+    "disabled": "비활성화됨"
+  },
+  "settings": {
+    "title": "설정",
+    "subtitle": "환경 설정 및 알림을 관리하세요",
+    "loginRequired": "설정에 접근하려면 로그인하세요",
+    "alertsNotifications": "알림 및 공지",
+    "general": "일반 설정",
+    "language": "언어",
+    "languageDesc": "인터페이스 언어",
+    "timezone": "시간대",
+    "timezoneDesc": "날짜 표시를 위한 시간대",
+    "currency": "통화",
+    "currencyDesc": "표시할 기본 통화",
+    "saveChanges": "변경 사항 저장",
+    "discardChanges": "변경 사항 취소"
+  },
+  "landing": {
+    "nav": {
+      "home": "홈",
+      "features": "기능",
+      "howItWorks": "작동 원리",
+      "plans": "플랜"
+    },
+    "cta": {
+      "getStarted": "지금 시작"
+    },
+    "hero": {
+      "badge": "카피 트레이딩 3.0 사용 가능",
+      "title": {
+        "part1": "트레이딩에 대해",
+        "part2": "항상 알고 싶었던 모든 것"
+      },
+      "subtitle": "Sentra Partners는 카피 트레이딩, 전문가 자문 및 고급 분석으로 수익을 가져오는 중요한 지표와 행동을 보여줍니다.",
+      "dashboard": {
+        "totalProfit": "총 수익",
+        "trades": "거래",
+        "winRate": "승률",
+        "profitFactor": "수익률",
+        "caption": "실시간 트레이딩 대시보드"
+      }
+    },
+    "vps": {
+      "title": "VPS 트레이딩",
+      "subtitle": "24/7 카피 트레이딩 전용 서버",
+      "cta": "VPS 주문",
+      "plans": {
+        "starter": {
+          "title": "VPS 시작용",
+          "specs": {
+            "ram": "1GB RAM",
+            "cpu": "1 CPU 코어",
+            "storage": "10GB SSD",
+            "support": "24/7 지원"
+          }
+        },
+        "professional": {
+          "title": "VPS 전문가용",
+          "specs": {
+            "ram": "2GB RAM",
+            "cpu": "2 CPU 코어",
+            "storage": "20GB SSD",
+            "backup": "자동 백업"
+          }
+        },
+        "enterprise": {
+          "title": "VPS 기업용",
+          "specs": {
+            "ram": "4GB RAM",
+            "cpu": "4 CPU 코어",
+            "storage": "40GB SSD",
+            "monitoring": "고급 모니터링"
+          }
+        }
+      }
+    },
+    "eas": {
+      "title": "전문가용 전문 자문",
+      "subtitle": "테스트되고 최적화된 트레이딩 로봇",
+      "cta": "EA 구매",
+      "plans": {
+        "oneTimePayment": "일회성 결제",
+        "scalpPro": {
+          "title": "스캘프 프로",
+          "stats": "승률: 76% | 시간프레임: M1-M5",
+          "features": {
+            "0": "자동 스캘핑",
+            "1": "낮은 리스크",
+            "2": "ROI 15%"
+          }
+        },
+        "trendMaster": {
+          "title": "트렌드 마스터",
+          "stats": "승률: 82% | 시간프레임: H1-H4",
+          "features": {
+            "0": "트렌드 분석",
+            "1": "지능형 스톱로스",
+            "2": "ROI 22%"
+          }
+        },
+        "gridBot": {
+          "title": "그리드 봇",
+          "stats": "승률: 79% | 시간프레임: H1-D1",
+          "features": {
+            "0": "그리드 전략",
+            "1": "횡보 시장",
+            "2": "ROI 18%"
+          }
+        }
+      }
+    },
+    "plans": {
+      "title": "구독 플랜",
+      "subtitle": "카피 트레이딩 플랫폼에 대한 완전한 액세스",
+      "cta": "플랜 선택",
+      "popularBadge": "가장 인기",
+      "basic": {
+        "title": "기초",
+        "features": {
+          "0": "카피 트레이딩 (1 마스터 계정)",
+          "1": "기본 대시보드",
+          "2": "이메일 지원",
+          "3": "월간 업데이트"
+        }
+      },
+      "professional": {
+        "title": "전문가용",
+        "features": {
+          "0": "카피 트레이딩 (3 마스터 계정)",
+          "1": "고급 대시보드",
+          "2": "우선 지원",
+          "3": "주간 분석",
+          "4": "EA 할인"
+        }
+      },
+      "enterprise": {
+        "title": "기업용",
+        "features": {
+          "0": "전문가용의 모든 것",
+          "1": "VPS 시작용 포함",
+          "2": "월간 1시간 컨설팅",
+          "3": "사용자 정의 EA",
+          "4": "API 액세스"
+        }
+      }
+    },
+    "footer": {
+      "copyright": "모든 권리 보유.",
+      "language": "언어",
+      "currency": "통화",
+      "perMonth": "월별"
+    },
+    "stats": {
+      "tradesJournaled": "기록된 거래",
+      "backtestedSessions": "백테스트 세션", 
+      "sharedOperations": "공유된 작업",
+      "tradersOnBoard": "플랫폼 트레이더"
+    },
+    "copyTrading": {
+      "title": "강력하고 자동화된 카피 트레이딩",
+      "description": "당신은 트레이딩에 집중하고, 우리는 당신의 개선을 돕는 데 집중합니다. 자동화된 카피 트레이딩으로,我们는 어려운 작업을 대신해 드립니다."
+    },
+    "analytics": {
+      "title": "트레이딩 통계 분석하기",
+      "description": "당신이 어떤 실수를 했는지, 계획한 것보다 더 위험을 감수했는지, 그리고 각 거래에 대한 훨씬 더 구체적인 통계를 이해하세요."
+    },
+    "resources": {
+      "title": "왜 Sentra Partners를 선택해야 할까요?",
+      "subtitle": "시장을 완전히 마스터하는 데 필요한 모든 것"
+    },
+    "howItWorks": {
+      "title": "Sentra Partners로 트레이딩이 간단해집니다",
+      "subtitle": "단계별 가이드를 아래에서 확인하세요"
+    },
+    "results": {
+      "title": "우리의 성과",
+      "subtitle": "일부 수치를 확인해보세요"
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "subtitle": "Sentra Partners에 대한 가장 일반적인 질문으로 당신의 의문을 해소하세요",
+      "items": [
+        {
+          "question": "카피 트레이딩은 어떻게 작동하나요?",
+          "answer": "카피 트레이딩은 전문 트레이더의 작업을 자동으로 복사하여 나만의 계정에서 그들의 전략을 재현할 수 있게 해줍니다."
+        },
+        {
+          "question": "언제든지 구독을 취소할 수 있나요?",
+          "answer": "네, 취소 수수료나 약정 없이 언제든지 구독을 취소할 수 있습니다."
+        },
+        {
+          "question": "전문가 자문이 안전한가요?",
+          "answer": "모든 EA는 엄격한 테스트를 거쳐 제공되기 전에 기술팀이 검증합니다."
+        },
+        {
+          "question": "어떤 기술 지원이 제공되나요?",
+          "answer": "모든 플랜에 대해 이메일 지원, 전문가 플랜에 대해 우선 지원, 기업용 플랜에 대해 24/7 지원을 제공합니다."
+        },
+        {
+          "question": "나만의 VPS를 사용할 수 있나요?",
+          "answer": "네, 나만의 VPS를 사용하거나 제공되는 플랜 중 하나를 구매할 수 있습니다. 기업용 플랜 고객에게 할인을 제공합니다."
+        }
+      ]
+    },
+    "conversar": {
+      "vps": "VPS에 대한 질문이 있으신가요? 우리는 도와드리겠습니다!",
+      "eas": "전문가 자문에 대해 더 알고 싶으신가요? 대화해봐요!",
+      "plans": "시작할 준비가 되셨나요? 플랜에 대해 이야기해봐요!"
+    },
+    "footerCta": {
+      "title": "트레이딩을 변화시킬 준비가 되셨나요?",
+      "description": "이미 우리 플랫폼을 사용하고 있는 전문 트레이더 수천 명에 합류하세요"
+    }
+  }
+}

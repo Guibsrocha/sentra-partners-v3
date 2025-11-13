@@ -1,0 +1,284 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "add": "追加",
+    "search": "検索",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "confirm": "確認",
+    "back": "戻る",
+    "next": "次へ",
+    "finish": "完了",
+    "close": "閉じる"
+  },
+  "nav": {
+    "dashboard": "ダッシュボード",
+    "accounts": "アカウント",
+    "trades": "トレード",
+    "analytics": "分析",
+    "copyTrading": "コピー取引",
+    "traders": "トレーダー",
+    "strategies": "戦略",
+    "calendar": "カレンダー",
+    "alerts": "アラート",
+    "subscriptions": "サブスクリプション",
+    "vps": "VPS",
+    "myVMs": "マイVM",
+    "expertAdvisors": "エキスパートアドバイザー",
+    "settings": "設定",
+    "admin": "管理者",
+    "support": "サポートチャット"
+  },
+  "alerts": {
+    "title": "アラートと通知",
+    "subtitle": "プッシュ通知を設定し、システムアラートを管理します",
+    "config": "アラート設定",
+    "drawdown": "ドローダウンアラート",
+    "drawdownDesc": "ドローダウンが制限に達したときに通知を受け取る",
+    "trades": "トレードアラート",
+    "tradesDesc": "トレードの開始と終了に関する通知",
+    "connection": "接続アラート",
+    "connectionDesc": "MT4/MT5との接続が切断されたときの警告",
+    "drawdownLimit": "ドローダウン制限",
+    "drawdownLimitDesc": "アラート前の最大ドローダウン率",
+    "ntfyTitle": "ntfy.sh通知（Android + iPhone）",
+    "ntfyDesc": "無料のntfyアプリを使ってスマホ（AndroidまたはiPhone）に即時プッシュ通知を受け取る。",
+    "yourTopic": "あなたのユニークトピック：",
+    "howToConfig": "設定方法：",
+    "step1": "1. スマホに「ntfy」アプリをインストール",
+    "step2": "2. アプリを開き「＋」をクリック",
+    "step3": "3. 上記のトピックを入力",
+    "step4": "4. 完了！ここで通知を受け取ります",
+    "enableNotifications": "通知を有効にする",
+    "enableNotificationsDesc": "すべてのntfy通知を有効にする",
+    "dailySummary": "日次サマリー",
+    "dailySummaryDesc": "当日の利益、トレード、勝率",
+    "weeklySummary": "週次サマリー",
+    "weeklySummaryDesc": "日曜日から金曜日までのまとめ",
+    "time": "時間：",
+    "testDaily": "日次サマリーをテスト",
+    "testWeekly": "週次サマリーをテスト",
+    "sendTest": "テスト通知を送信",
+    "saveSettings": "設定を保存",
+    "history": "アラート履歴",
+    "noAlerts": "記録されたアラートはありません",
+    "enabled": "有効",
+    "disabled": "無効"
+  },
+  "settings": {
+    "title": "設定",
+    "subtitle": "設定とアラートを管理する",
+    "loginRequired": "設定にアクセスするにはログインしてください",
+    "alertsNotifications": "アラートと通知",
+    "general": "一般設定",
+    "language": "言語",
+    "languageDesc": "インターフェースの言語",
+    "timezone": "タイムゾーン",
+    "timezoneDesc": "日付表示のタイムゾーン",
+    "currency": "通貨",
+    "currencyDesc": "表示の標準通貨",
+    "saveChanges": "変更を保存",
+    "discardChanges": "変更を破棄"
+  },
+  "landing": {
+    "nav": {
+      "home": "ホーム",
+      "features": "機能",
+      "howItWorks": "使用方法",
+      "plans": "プラン"
+    },
+    "cta": {
+      "getStarted": "今すぐ開始"
+    },
+    "hero": {
+      "badge": "コピー取引 3.0 が利用可能",
+      "title": {
+        "part1": "取引について",
+        "part2": "常に知りたかったすべて"
+      },
+      "subtitle": "Sentra Partners は、コピー取引、エキスパートアドバイザー、高度な分析で利益につながる重要な指標と行動を示します。",
+      "dashboard": {
+        "totalProfit": "総利益",
+        "trades": "トレード",
+        "winRate": "勝率",
+        "profitFactor": "利益率",
+        "caption": "リアルタイム取引ダッシュボード"
+      }
+    },
+    "vps": {
+      "title": "VPS 取引",
+      "subtitle": "24/7 コピー取引専用サーバー",
+      "cta": "VPS を注文",
+      "plans": {
+        "starter": {
+          "title": "VPS スターター",
+          "specs": {
+            "ram": "1GB RAM",
+            "cpu": "1 CPU コア",
+            "storage": "10GB SSD",
+            "support": "24/7 サポート"
+          }
+        },
+        "professional": {
+          "title": "VPS プロフェッショナル",
+          "specs": {
+            "ram": "2GB RAM",
+            "cpu": "2 CPU コア",
+            "storage": "20GB SSD",
+            "backup": "自動バックアップ"
+          }
+        },
+        "enterprise": {
+          "title": "VPS エンタープライズ",
+          "specs": {
+            "ram": "4GB RAM",
+            "cpu": "4 CPU コア",
+            "storage": "40GB SSD",
+            "monitoring": "高度な監視"
+          }
+        }
+      }
+    },
+    "eas": {
+      "title": "プロエキスパートアドバイザー",
+      "subtitle": "テスト済み・最適化取引ロボット",
+      "cta": "EA を購入",
+      "plans": {
+        "oneTimePayment": "一括払い",
+        "scalpPro": {
+          "title": "スケルプ プロ",
+          "stats": "勝率: 76% | タイムフレーム: M1-M5",
+          "features": {
+            "0": "自動スコルピング",
+            "1": "低リスク",
+            "2": "ROI 15%"
+          }
+        },
+        "trendMaster": {
+          "title": "トレンド マスター",
+          "stats": "勝率: 82% | タイムフレーム: H1-H4",
+          "features": {
+            "0": "トレンド分析",
+            "1": "インテリジェント損切り",
+            "2": "ROI 22%"
+          }
+        },
+        "gridBot": {
+          "title": "グリッドボット",
+          "stats": "勝率: 79% | タイムフレーム: H1-D1",
+          "features": {
+            "0": "グリッド戦略",
+            "1": "レンジ相場",
+            "2": "ROI 18%"
+          }
+        }
+      }
+    },
+    "plans": {
+      "title": "サブスクリプションプラン",
+      "subtitle": "コピー取引プラットフォームへの完全アクセス",
+      "cta": "プランを選ぶ",
+      "popularBadge": "最も人気",
+      "basic": {
+        "title": "基本",
+        "features": {
+          "0": "コピー取引（1 master アカウント）",
+          "1": "基本ダッシュボード",
+          "2": "メールサポート",
+          "3": "月次アップデート"
+        }
+      },
+      "professional": {
+        "title": "プロフェッショナル",
+        "features": {
+          "0": "コピー取引（3 master アカウント）",
+          "1": "アドバンスドダッシュボード",
+          "2": "優先サポート",
+          "3": "週次分析",
+          "4": "EA 割引"
+        }
+      },
+      "enterprise": {
+        "title": "エンタープライズ",
+        "features": {
+          "0": "プロフェッショナルプランのすべて",
+          "1": "VPS スターター付き",
+          "2": "月次1時間コンサルティング",
+          "3": "カスタムEA",
+          "4": "API アクセス"
+        }
+      }
+    },
+    "footer": {
+      "copyright": "全著作権保有。",
+      "language": "言語",
+      "currency": "通貨",
+      "perMonth": "月あたり"
+    },
+    "stats": {
+      "tradesJournaled": "トレードカタログ",
+      "backtestedSessions": "バックテストセッション", 
+      "sharedOperations": "共有トレード",
+      "tradersOnBoard": "プラットフォームトレーダー"
+    },
+    "copyTrading": {
+      "title": "強力で自動化されたコピー取引",
+      "description": "あなたは取引に集中し、私たちはあなたを改善するのを支援します。自動化されたコピー取引で、私たちは重い作業を行います。"
+    },
+    "analytics": {
+      "title": "あなたの取引統計を分析する",
+      "description": "あなたが犯したエラー、リスクを過度に 取-Always Felい操心し よりの詳細統計 Your プラン堂困 また これは また 分析になっていますか？プランのための統計 管理 деталей 每眉 管理です。"
+    },
+    "resources": {
+      "title": "なぜ Sentra Partners を選ぶのか？",
+      "subtitle": "市場を支配するために必要なすべて"
+    },
+    "howItWorks": {
+      "title": "Sentra Partners で取引は簡単に",
+      "subtitle": "以下のステップをご覧ください"
+    },
+    "results": {
+      "title": "私たちの結果",
+      "subtitle": "いくつかの数字をご覧ください"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "subtitle": "Sentra Partners についてよくある質問に対する回答",
+      "items": [
+        {
+          "question": "コピー取引はどのように機能しますか？",
+          "answer": "コピー取引により、プロトレーダーの取引を自動的にコピーし、自身的習慣でトレンドを分析・コピーできます。"
+        },
+        {
+          "question": "いつでもサブスクリプションをキャンセルできますか？",
+          "answer": "はい、キャンセル料金を支払わず、サブスクリプションをキャンセルできます。"
+        },
+        {
+          "question": "Expert Advisor は安全ですか？",
+          "answer": "すべての EA は厳格なテストを受け、技術チームにより提供前に 提供されます。"
+        },
+        {
+          "question": "どのような技術サポート が提供されますか？",
+          "answer": "すべてのプランでメールサポート、プロフェッショナルプランで優先サポート、Enterprise プランで24/7サポートを提供しています。"
+        },
+        {
+          "question": "独自の VPS を使用できますか？",
+          "answer": "はい独自の VPS を使用するか私たちのプランの一つを契約できます。Enterprise プランのお客様には割引を提供しています。"
+        }
+      ]
+    },
+    "conversar": {
+      "vps": "私たちの VPS について質問がありますか？ 私たちはここでお手伝いします！",
+      "eas": "私たちの Expert Advisor についてもっと知りたいですか？ 私たちと話しましょう！",
+      "plans": "始める準備はできましたか？ 私たちとプランについて話しましょう！"
+    },
+    "footerCta": {
+      "title": "取引を revolutionize する準備はできましたか？",
+      "description": "私たちのプラットフォームを使用している数千人のプロトレーダーに参加"
+    }
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "close": "Close"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "accounts": "Accounts",
+    "trades": "Trades",
+    "analytics": "Analytics",
+    "copyTrading": "Copy Trading",
+    "traders": "Traders",
+    "strategies": "Strategies",
+    "calendar": "Calendar",
+    "alerts": "Alerts",
+    "subscriptions": "Subscriptions",
+    "vps": "VPS",
+    "myVMs": "My VMs",
+    "expertAdvisors": "Expert Advisors",
+    "settings": "Settings",
+    "admin": "Admin",
+    "support": "Support Chat"
+  },
+  "alerts": {
+    "title": "Alerts and Notifications",
+    "subtitle": "Configure push notifications and manage system alerts",
+    "config": "Alert Configuration",
+    "drawdown": "Drawdown Alerts",
+    "drawdownDesc": "Receive notifications when drawdown reaches the limit",
+    "trades": "Trade Alerts",
+    "tradesDesc": "Notifications about trade opening and closing",
+    "connection": "Connection Alerts",
+    "connectionDesc": "Warnings when connection to MT4/MT5 is lost",
+    "drawdownLimit": "Drawdown Limit",
+    "drawdownLimitDesc": "Maximum drawdown percentage before alert",
+    "ntfyTitle": "ntfy.sh Notifications (Android + iPhone)",
+    "ntfyDesc": "Receive instant push notifications on your phone (Android or iPhone) using the free ntfy app.",
+    "yourTopic": "Your unique topic:",
+    "howToConfig": "How to configure:",
+    "step1": "1. Install the \"ntfy\" app on your phone",
+    "step2": "2. Open the app and click \"+\"",
+    "step3": "3. Enter the topic above",
+    "step4": "4. Done! You will receive notifications here",
+    "enableNotifications": "Enable Notifications",
+    "enableNotificationsDesc": "Enable all ntfy notifications",
+    "dailySummary": "Daily Summary",
+    "dailySummaryDesc": "Profit, trades and win rate of the day",
+    "weeklySummary": "Weekly Summary",
+    "weeklySummaryDesc": "Saturday: summary Sunday to Friday",
+    "time": "Time:",
+    "testDaily": "Test Daily Summary",
+    "testWeekly": "Test Weekly Summary",
+    "sendTest": "Send Test Notification",
+    "saveSettings": "Save Settings",
+    "history": "Alert History",
+    "noAlerts": "No alerts recorded",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your preferences and alerts",
+    "loginRequired": "Please log in to access settings",
+    "alertsNotifications": "Alerts and Notifications",
+    "general": "General Preferences",
+    "language": "Language",
+    "languageDesc": "Interface language",
+    "timezone": "Time Zone",
+    "timezoneDesc": "Time zone for date display",
+    "currency": "Currency",
+    "currencyDesc": "Default currency for display",
+    "saveChanges": "Save Changes",
+    "discardChanges": "Discard Changes"
+  },
+  "landing": {
+    "nav": {
+      "home": "Home",
+      "features": "Features",
+      "howItWorks": "How It Works",
+      "plans": "Plans"
+    },
+    "cta": {
+      "getStarted": "Get Started"
+    },
+    "hero": {
+      "badge": "Copy Trading 3.0 is available",
+      "title": {
+        "part1": "Everything you always wanted",
+        "part2": "to know about trading"
+      },
+      "subtitle": "Sentra Partners shows the metrics that matter and the behaviors that lead to profit with copy trading, expert advisors and advanced analysis.",
+      "dashboard": {
+        "totalProfit": "Total Profit",
+        "trades": "Trades",
+        "winRate": "Win Rate",
+        "profitFactor": "Profit Factor",
+        "caption": "Real-Time Trading Dashboard"
+      }
+    },
+    "vps": {
+      "title": "VPS Trading",
+      "subtitle": "Dedicated servers for 24/7 copy trading",
+      "cta": "Order VPS",
+      "plans": {
+        "starter": {
+          "title": "VPS Starter",
+          "specs": {
+            "ram": "1GB RAM",
+            "cpu": "1 CPU Core",
+            "storage": "10GB SSD",
+            "support": "24/7 Support"
+          }
+        },
+        "professional": {
+          "title": "VPS Professional",
+          "specs": {
+            "ram": "2GB RAM",
+            "cpu": "2 CPU Cores",
+            "storage": "20GB SSD",
+            "backup": "Automatic backup"
+          }
+        },
+        "enterprise": {
+          "title": "VPS Enterprise",
+          "specs": {
+            "ram": "4GB RAM",
+            "cpu": "4 CPU Cores",
+            "storage": "40GB SSD",
+            "monitoring": "Advanced monitoring"
+          }
+        }
+      }
+    },
+    "eas": {
+      "title": "Professional Expert Advisors",
+      "subtitle": "Tested and optimized trading robots",
+      "cta": "Buy EA",
+      "plans": {
+        "oneTimePayment": "one-time payment",
+        "scalpPro": {
+          "title": "Scalp Pro",
+          "stats": "Win Rate: 76% | Timeframe: M1-M5",
+          "description": "EA specialized in scalping operations",
+          "features": {
+            "0": "Automated scalping",
+            "1": "Low risk",
+            "2": "ROI 15%"
+          }
+        },
+        "trendMaster": {
+          "title": "Trend Master",
+          "description": "EA for trend following",
+          "stats": "Win Rate: 82% | Timeframe: H1-H4",
+          "features": {
+            "0": "Trend analysis",
+            "1": "Intelligent stop loss",
+            "2": "ROI 22%"
+          }
+        },
+        "gridBot": {
+          "title": "Grid Bot",
+          "description": "Bot for sideways markets",
+          "stats": "Win Rate: 79% | Timeframe: H1-D1",
+          "features": {
+            "0": "Grid strategy",
+            "1": "Sideways markets",
+            "2": "ROI 18%"
+          }
+        }
+      }
+    },
+    "plans": {
+      "title": "Subscription Plans",
+      "subtitle": "Complete access to copy trading platform",
+      "cta": "Choose Plan",
+      "popularBadge": "Most Popular",
+      "basic": {
+        "title": "Basic",
+        "features": {
+          "0": "Copy Trading (1 master account)",
+          "1": "Basic dashboard",
+          "2": "Email support",
+          "3": "Monthly updates"
+        }
+      },
+      "professional": {
+        "title": "Professional",
+        "features": {
+          "0": "Copy Trading (3 master accounts)",
+          "1": "Advanced dashboard",
+          "2": "Priority support",
+          "3": "Weekly analytics",
+          "4": "EA discount"
+        }
+      },
+      "enterprise": {
+        "title": "Enterprise",
+        "features": {
+          "0": "Everything in Professional",
+          "1": "VPS Starter included",
+          "2": "Monthly 1h consultation",
+          "3": "Custom EA",
+          "4": "API access"
+        }
+      }
+    },
+    "footer": {
+      "copyright": "All rights reserved."
+    },
+    "stats": {
+      "tradesJournaled": "Journaled Trades",
+      "backtestedSessions": "Backtested Sessions",
+      "sharedOperations": "Shared Operations",
+      "tradersOnBoard": "Traders Onboard"
+    },
+    "copyTrading": {
+      "title": "Powerful and Automated Copy Trading",
+      "description": "You focus on trading while we focus on helping you improve. With automated copy trading, we do the heavy lifting for you."
+    },
+    "analytics": {
+      "title": "Analyze your trading statistics",
+      "description": "Understand which mistakes you made, if you risked more than planned and much more specific statistics for each trade."
+    },
+    "resources": {
+      "title": "Why choose Sentra Partners?",
+      "subtitle": "Everything you need to master the market"
+    },
+    "howItWorks": {
+      "title": "With Sentra Partners, trading becomes simple",
+      "subtitle": "See the step-by-step below"
+    },
+    "results": {
+      "title": "Our Results",
+      "subtitle": "Check out some of our numbers"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Clear your doubts with the most frequent questions about Sentra Partners",
+      "items": [
+        {
+          "question": "How does copy trading work?",
+          "answer": "Copy trading allows you to automatically copy the operations of professional traders, replicating their strategies in your own account."
+        },
+        {
+          "question": "Can I cancel at any time?",
+          "answer": "Yes, you can cancel your subscription at any time without cancellation fees or commitment."
+        },
+        {
+          "question": "Are Expert Advisors safe?",
+          "answer": "All our EAs undergo rigorous testing and are verified by our technical team before being made available."
+        },
+        {
+          "question": "What technical support is available?",
+          "answer": "We offer email support for all plans, priority support for the Professional plan and 24/7 support for the Enterprise plan."
+        },
+        {
+          "question": "Can I use my own VPS?",
+          "answer": "Yes, you can use your own VPS or purchase one of our plans. We offer discounts for Enterprise plan customers."
+        }
+      ]
+    },
+    "conversar": {
+      "vps": "Have questions about our VPS? We're here to help!",
+      "eas": "Want to know more about our Expert Advisors? Talk to us!",
+      "plans": "Ready to get started? Talk to us about the plans!"
+    },
+    "footerCta": {
+      "title": "Ready to Transform Your Trading?",
+      "description": "Join thousands of professional traders who are already using our platform"
+    }
+  }
+}

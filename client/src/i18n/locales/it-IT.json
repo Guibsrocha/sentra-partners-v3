@@ -1,0 +1,284 @@
+{
+  "common": {
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "add": "Aggiungi",
+    "search": "Cerca",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "confirm": "Conferma",
+    "back": "Indietro",
+    "next": "Avanti",
+    "finish": "Termina",
+    "close": "Chiudi"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "accounts": "Conti",
+    "trades": "Operazioni",
+    "analytics": "Analisi",
+    "copyTrading": "Copy Trading",
+    "traders": "Trader",
+    "strategies": "Strategie",
+    "calendar": "Calendario",
+    "alerts": "Avvisi",
+    "subscriptions": "Abbonamenti",
+    "vps": "VPS",
+    "myVMs": "Le mie VM",
+    "expertAdvisors": "Expert Advisor",
+    "settings": "Impostazioni",
+    "admin": "Admin",
+    "support": "Chat Supporto"
+  },
+  "alerts": {
+    "title": "Avvisi e Notifiche",
+    "subtitle": "Configura notifiche push e gestisci avvisi di sistema",
+    "config": "Configurazione Avvisi",
+    "drawdown": "Avvisi di Drawdown",
+    "drawdownDesc": "Ricevi notifiche quando il drawdown raggiunge il limite",
+    "trades": "Avvisi di Operazioni",
+    "tradesDesc": "Notifiche su apertura e chiusura delle operazioni",
+    "connection": "Avvisi di Connessione",
+    "connectionDesc": "Avvisi quando la connessione a MT4/MT5 viene persa",
+    "drawdownLimit": "Limite di Drawdown",
+    "drawdownLimitDesc": "Percentuale massima di drawdown prima dell’avviso",
+    "ntfyTitle": "Notifiche ntfy.sh (Android + iPhone)",
+    "ntfyDesc": "Ricevi notifiche push istantanee sul tuo cellulare (Android o iPhone) usando l’app gratuita ntfy.",
+    "yourTopic": "Il tuo topic unico:",
+    "howToConfig": "Come configurare:",
+    "step1": "1. Installa l’app \"ntfy\" sul tuo cellulare",
+    "step2": "2. Apri l’app e clicca su \"+\"",
+    "step3": "3. Inserisci il topic sopra",
+    "step4": "4. Fatto! Riceverai le notifiche qui",
+    "enableNotifications": "Abilita Notifiche",
+    "enableNotificationsDesc": "Abilita tutte le notifiche ntfy",
+    "dailySummary": "Riepilogo Giornaliero",
+    "dailySummaryDesc": "Profitto, operazioni e tasso di successo del giorno",
+    "weeklySummary": "Riepilogo Settimanale",
+    "weeklySummaryDesc": "Sabato: riepilogo da domenica a venerdì",
+    "time": "Orario:",
+    "testDaily": "Testa Riepilogo Giornaliero",
+    "testWeekly": "Testa Riepilogo Settimanale",
+    "sendTest": "Invia Notifica di Test",
+    "saveSettings": "Salva Impostazioni",
+    "history": "Storico Avvisi",
+    "noAlerts": "Nessun avviso registrato",
+    "enabled": "Attivato",
+    "disabled": "Disattivato"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "subtitle": "Gestisci le tue preferenze e avvisi",
+    "loginRequired": "Effettua il login per accedere alle impostazioni",
+    "alertsNotifications": "Avvisi e Notifiche",
+    "general": "Preferenze Generali",
+    "language": "Lingua",
+    "languageDesc": "Lingua dell’interfaccia",
+    "timezone": "Fuso Orario",
+    "timezoneDesc": "Fuso orario per la visualizzazione delle date",
+    "currency": "Valuta",
+    "currencyDesc": "Valuta predefinita per la visualizzazione",
+    "saveChanges": "Salva Modifiche",
+    "discardChanges": "Annulla Modifiche"
+  },
+  "landing": {
+    "nav": {
+      "home": "Home",
+      "features": "Caratteristiche",
+      "howItWorks": "Come Funziona",
+      "plans": "Piani"
+    },
+    "cta": {
+      "getStarted": "Inizia Ora"
+    },
+    "hero": {
+      "badge": "Copy Trading 3.0 è disponibile",
+      "title": {
+        "part1": "Tutto quello che hai sempre voluto",
+        "part2": "sapere sul trading"
+      },
+      "subtitle": "Sentra Partners mostra le metriche che contano e i comportamenti che portano al profitto con copy trading, expert advisors e analisi avanzata.",
+      "dashboard": {
+        "totalProfit": "Profitto Totale",
+        "trades": "Operazioni",
+        "winRate": "Tasso di Successo",
+        "profitFactor": "Fattore di Profitto",
+        "caption": "Dashboard Trading in Tempo Reale"
+      }
+    },
+    "vps": {
+      "title": "VPS Trading",
+      "subtitle": "Server dedicati per copy trading 24/7",
+      "cta": "Ordina VPS",
+      "plans": {
+        "starter": {
+          "title": "VPS Starter",
+          "specs": {
+            "ram": "1GB RAM",
+            "cpu": "1 Core CPU",
+            "storage": "10GB SSD",
+            "support": "Supporto 24/7"
+          }
+        },
+        "professional": {
+          "title": "VPS Professional",
+          "specs": {
+            "ram": "2GB RAM",
+            "cpu": "2 Core CPU",
+            "storage": "20GB SSD",
+            "backup": "Backup automatico"
+          }
+        },
+        "enterprise": {
+          "title": "VPS Enterprise",
+          "specs": {
+            "ram": "4GB RAM",
+            "cpu": "4 Core CPU",
+            "storage": "40GB SSD",
+            "monitoring": "Monitoraggio avanzato"
+          }
+        }
+      }
+    },
+    "eas": {
+      "title": "Expert Advisor Professionali",
+      "subtitle": "Robot di trading testati e ottimizzati",
+      "cta": "Acquista EA",
+      "plans": {
+        "oneTimePayment": "pagamento unico",
+        "scalpPro": {
+          "title": "Scalp Pro",
+          "stats": "Tasso di Successo: 76% | Timeframe: M1-M5",
+          "features": {
+            "0": "Scalping automatizzato",
+            "1": "Basso rischio",
+            "2": "ROI 15%"
+          }
+        },
+        "trendMaster": {
+          "title": "Trend Master",
+          "stats": "Tasso di Successo: 82% | Timeframe: H1-H4",
+          "features": {
+            "0": "Analisi del trend",
+            "1": "Stop loss intelligente",
+            "2": "ROI 22%"
+          }
+        },
+        "gridBot": {
+          "title": "Grid Bot",
+          "stats": "Tasso di Successo: 79% | Timeframe: H1-D1",
+          "features": {
+            "0": "Strategia grid",
+            "1": "Mercati laterali",
+            "2": "ROI 18%"
+          }
+        }
+      }
+    },
+    "plans": {
+      "title": "Piani di Abbonamento",
+      "subtitle": "Accesso completo alla piattaforma di copy trading",
+      "cta": "Scegli Piano",
+      "popularBadge": "Più Popolare",
+      "basic": {
+        "title": "Base",
+        "features": {
+          "0": "Copy Trading (1 account master)",
+          "1": "Dashboard di base",
+          "2": "Supporto email",
+          "3": "Aggiornamenti mensili"
+        }
+      },
+      "professional": {
+        "title": "Professionale",
+        "features": {
+          "0": "Copy Trading (3 account master)",
+          "1": "Dashboard avanzato",
+          "2": "Supporto prioritario",
+          "3": "Analisi settimanali",
+          "4": "Sconto EA"
+        }
+      },
+      "enterprise": {
+        "title": "Enterprise",
+        "features": {
+          "0": "Tutto del Professionista",
+          "1": "VPS Starter incluso",
+          "2": "Consultazione mensile di 1h",
+          "3": "EA personalizzato",
+          "4": "Accesso API"
+        }
+      }
+    },
+    "footer": {
+      "copyright": "Tutti i diritti riservati.",
+      "language": "Lingua",
+      "currency": "Valuta",
+      "perMonth": "al mese"
+    },
+    "stats": {
+      "tradesJournaled": "Operazioni Catalogate",
+      "backtestedSessions": "Sessioni Testate", 
+      "sharedOperations": "Operazioni Condivise",
+      "tradersOnBoard": "Trader a Bordo"
+    },
+    "copyTrading": {
+      "title": "Copy Trading Potente e Automatizzato",
+      "description": "Ti concentri sul trading mentre noi ci concentriamo sull'aiutarti a migliorare. Con il copy trading automatizzato, facciamo il lavoro pesante per te."
+    },
+    "analytics": {
+      "title": "Analizza le tue statistiche di trading",
+      "description": "Capisci quali errori hai commesso, se hai rischiato più del previsto e molte più statistiche specifiche per ogni operazione."
+    },
+    "resources": {
+      "title": "Perché scegliere Sentra Partners?",
+      "subtitle": "Tutto ciò di cui hai bisogno per dominare il mercato"
+    },
+    "howItWorks": {
+      "title": "Con Sentra Partners, il trading diventa semplice",
+      "subtitle": "Vedi la guida passo dopo passo di seguito"
+    },
+    "results": {
+      "title": "I Nostri Risultati",
+      "subtitle": "Guarda alcuni dei nostri numeri"
+    },
+    "faq": {
+      "title": "Domande Frequenti",
+      "subtitle": "Chiarisci i tuoi dubbi con le domande più frequenti su Sentra Partners",
+      "items": [
+        {
+          "question": "Come funziona il copy trading?",
+          "answer": "Il copy trading ti permette di copiare automaticamente le operazioni dei trader professionali, replicando le loro strategie nel tuo stesso account."
+        },
+        {
+          "question": "Posso cancellare il mio abbonamento in qualsiasi momento?",
+          "answer": "Sì, puoi cancellare il tuo abbonamento in qualsiasi momento senza commissioni di cancellazione o impegni."
+        },
+        {
+          "question": "Gli Expert Advisors sono sicuri?",
+          "answer": "Tutti i nostri EAs subiscono test rigorosi e vengono verificati dal nostro team tecnico prima di essere messi a disposizione."
+        },
+        {
+          "question": "Che supporto tecnico è disponibile?",
+          "answer": "Offriamo supporto email per tutti i piani, supporto prioritario per il piano Professionale e supporto 24/7 per il piano Enterprise."
+        },
+        {
+          "question": "Posso usare la mia VPS?",
+          "answer": "Sì, puoi usare la tua VPS o acquistare uno dei nostri piani. Offriamo sconti per i clienti del piano Enterprise."
+        }
+      ]
+    },
+    "conversar": {
+      "vps": "Hai domande sui nostri VPS? Siamo qui per aiutare!",
+      "eas": "Vuoi saperne di più sui nostri Expert Advisor? Parlaci!",
+      "plans": "Pronto a iniziare? Parlaci dei piani!"
+    },
+    "footerCta": {
+      "title": "Pronto a Trasformare il tuo Trading?",
+      "description": "Unisciti a migliaia di trader professionali che già utilizzano la nostra piattaforma"
+    }
+  }
+}

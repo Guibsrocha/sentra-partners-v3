@@ -1,0 +1,287 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Añadir",
+    "search": "Buscar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "confirm": "Confirmar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "finish": "Finalizar",
+    "close": "Cerrar"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "accounts": "Cuentas",
+    "trades": "Operaciones",
+    "analytics": "Análisis",
+    "copyTrading": "Copy Trading",
+    "traders": "Traders",
+    "strategies": "Estrategias",
+    "calendar": "Calendario",
+    "alerts": "Alertas",
+    "subscriptions": "Suscripciones",
+    "vps": "VPS",
+    "myVMs": "Mis VMs",
+    "expertAdvisors": "Expert Advisors",
+    "settings": "Configuración",
+    "admin": "Admin",
+    "support": "Chat Soporte"
+  },
+  "alerts": {
+    "title": "Alertas y Notificaciones",
+    "subtitle": "Configura notificaciones push y gestiona alertas del sistema",
+    "config": "Configuración de Alertas",
+    "drawdown": "Alertas de Drawdown",
+    "drawdownDesc": "Recibe notificaciones cuando el drawdown alcance el límite",
+    "trades": "Alertas de Operaciones",
+    "tradesDesc": "Notificaciones sobre apertura y cierre de operaciones",
+    "connection": "Alertas de Conexión",
+    "connectionDesc": "Avisos cuando se pierda la conexión con MT4/MT5",
+    "drawdownLimit": "Límite de Drawdown",
+    "drawdownLimitDesc": "Porcentaje máximo de drawdown antes de la alerta",
+    "ntfyTitle": "Notificaciones ntfy.sh (Android + iPhone)",
+    "ntfyDesc": "Recibe notificaciones push instantáneas en tu móvil (Android o iPhone) usando la app gratuita ntfy.",
+    "yourTopic": "Tu tema único:",
+    "howToConfig": "Cómo configurar:",
+    "step1": "1. Instala la app \"ntfy\" en tu móvil",
+    "step2": "2. Abre la app y pulsa en \"+\"",
+    "step3": "3. Escribe el tema arriba",
+    "step4": "4. ¡Listo! Recibirás notificaciones aquí",
+    "enableNotifications": "Activar Notificaciones",
+    "enableNotificationsDesc": "Habilitar todas las notificaciones ntfy",
+    "dailySummary": "Resumen Diario",
+    "dailySummaryDesc": "Beneficio, operaciones y tasa de éxito del día",
+    "weeklySummary": "Resumen Semanal",
+    "weeklySummaryDesc": "Sábado: resumen de domingo a viernes",
+    "time": "Horario:",
+    "testDaily": "Probar Resumen Diario",
+    "testWeekly": "Probar Resumen Semanal",
+    "sendTest": "Enviar Notificación de Prueba",
+    "saveSettings": "Guardar Configuración",
+    "history": "Historial de Alertas",
+    "noAlerts": "Ninguna alerta registrada",
+    "enabled": "Activado",
+    "disabled": "Desactivado"
+  },
+  "settings": {
+    "title": "Configuración",
+    "subtitle": "Gestiona tus preferencias y alertas",
+    "loginRequired": "Inicia sesión para acceder a la configuración",
+    "alertsNotifications": "Alertas y Notificaciones",
+    "general": "Preferencias Generales",
+    "language": "Idioma",
+    "languageDesc": "Idioma de la interfaz",
+    "timezone": "Zona Horaria",
+    "timezoneDesc": "Zona horaria para mostrar fechas",
+    "currency": "Moneda",
+    "currencyDesc": "Moneda predeterminada para mostrar",
+    "saveChanges": "Guardar Cambios",
+    "discardChanges": "Descartar Cambios"
+  },
+  "landing": {
+    "nav": {
+      "home": "Inicio",
+      "features": "Características",
+      "howItWorks": "Cómo Funciona",
+      "plans": "Planes"
+    },
+    "cta": {
+      "getStarted": "Comenzar Ahora"
+    },
+    "hero": {
+      "badge": "Copy Trading 3.0 está disponible",
+      "title": {
+        "part1": "Todo lo que siempre quisiste",
+        "part2": "saber sobre trading"
+      },
+      "subtitle": "Sentra Partners muestra las métricas que importan y los comportamientos que conducen al beneficio con copy trading, expert advisors y análisis avanzado.",
+      "dashboard": {
+        "totalProfit": "Beneficio Total",
+        "trades": "Operaciones",
+        "winRate": "Tasa de Éxito",
+        "profitFactor": "Factor de Beneficio",
+        "caption": "Panel de Trading en Tiempo Real"
+      }
+    },
+    "vps": {
+      "title": "VPS Trading",
+      "subtitle": "Servidores dedicados para copy trading 24/7",
+      "cta": "Contratar VPS",
+      "plans": {
+        "starter": {
+          "title": "VPS Starter",
+          "specs": {
+            "ram": "1GB RAM",
+            "cpu": "1 Core CPU",
+            "storage": "10GB SSD",
+            "support": "Soporte 24/7"
+          }
+        },
+        "professional": {
+          "title": "VPS Professional",
+          "specs": {
+            "ram": "2GB RAM",
+            "cpu": "2 Cores CPU",
+            "storage": "20GB SSD",
+            "backup": "Respaldo automático"
+          }
+        },
+        "enterprise": {
+          "title": "VPS Enterprise",
+          "specs": {
+            "ram": "4GB RAM",
+            "cpu": "4 Cores CPU",
+            "storage": "40GB SSD",
+            "monitoring": "Monitoreo avanzado"
+          }
+        }
+      }
+    },
+    "eas": {
+      "title": "Expert Advisors Profesionales",
+      "subtitle": "Robots de trading probados y optimizados",
+      "cta": "Comprar EA",
+      "plans": {
+        "oneTimePayment": "pago único",
+        "scalpPro": {
+          "title": "Scalp Pro",
+          "stats": "Tasa de Éxito: 76% | Timeframe: M1-M5",
+          "description": "EA especializado en operaciones de scalping",
+          "features": {
+            "0": "Escalamiento automatizado",
+            "1": "Riesgo bajo",
+            "2": "ROI 15%"
+          }
+        },
+        "trendMaster": {
+          "title": "Trend Master",
+          "description": "EA para seguimiento de tendencias",
+          "stats": "Tasa de Éxito: 82% | Timeframe: H1-H4",
+          "features": {
+            "0": "Análisis de tendencias",
+            "1": "Stop loss inteligente",
+            "2": "ROI 22%"
+          }
+        },
+        "gridBot": {
+          "title": "Grid Bot",
+          "description": "Bot para mercados laterales",
+          "stats": "Tasa de Éxito: 79% | Timeframe: H1-D1",
+          "features": {
+            "0": "Estrategia de cuadrícula",
+            "1": "Mercados laterales",
+            "2": "ROI 18%"
+          }
+        }
+      }
+    },
+    "plans": {
+      "title": "Planes de Suscripción",
+      "subtitle": "Acceso completo a la plataforma de copy trading",
+      "cta": "Elegir Plan",
+      "popularBadge": "Más Popular",
+      "basic": {
+        "title": "Básico",
+        "features": {
+          "0": "Copy Trading (1 cuenta master)",
+          "1": "Dashboard básico",
+          "2": "Soporte por email",
+          "3": "Actualizaciones mensuales"
+        }
+      },
+      "professional": {
+        "title": "Professional",
+        "features": {
+          "0": "Copy Trading (3 cuentas master)",
+          "1": "Dashboard avanzado",
+          "2": "Soporte prioritario",
+          "3": "Análisis semanales",
+          "4": "Descuento en EAs"
+        }
+      },
+      "enterprise": {
+        "title": "Enterprise",
+        "features": {
+          "0": "Todo lo del Profesional",
+          "1": "VPS Starter incluido",
+          "2": "Consulta mensual de 1h",
+          "3": "EA personalizado",
+          "4": "Acceso a la API"
+        }
+      }
+    },
+    "footer": {
+      "copyright": "Todos los derechos reservados.",
+      "language": "Idioma",
+      "currency": "Moneda",
+      "perMonth": "por mes"
+    },
+    "stats": {
+      "tradesJournaled": "Operaciones Catalogadas",
+      "backtestedSessions": "Sesiones Probadas", 
+      "sharedOperations": "Operaciones Compartidas",
+      "tradersOnBoard": "Traders en la Plataforma"
+    },
+    "copyTrading": {
+      "title": "Copy Trading Poderoso y Automatizado",
+      "description": "Te enfocas en operar mientras nosotros nos enfocamos en ayudarte a mejorar. Con copy trading automatizado, hacemos el trabajo pesado por ti."
+    },
+    "analytics": {
+      "title": "Analiza tus estadísticas de trading",
+      "description": "Entiende qué errores cometiste, si arriesgaste más de lo planeado y muchas más estadísticas específicas de cada operación."
+    },
+    "resources": {
+      "title": "¿Por qué elegir Sentra Partners?",
+      "subtitle": "Todo lo que necesitas para dominar el mercado"
+    },
+    "howItWorks": {
+      "title": "Con Sentra Partners, el trading se vuelve simple",
+      "subtitle": "Ve el paso a paso a continuación"
+    },
+    "results": {
+      "title": "Nuestros Resultados",
+      "subtitle": "Consulta algunos de nuestros números"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "subtitle": "Aclara tus dudas con las preguntas más frecuentes sobre Sentra Partners",
+      "items": [
+        {
+          "question": "¿Cómo funciona el copy trading?",
+          "answer": "El copy trading te permite copiar automáticamente las operaciones de traders profesionales, replicando sus estrategias en tu propia cuenta."
+        },
+        {
+          "question": "¿Puedo cancelar en cualquier momento?",
+          "answer": "Sí, puedes cancelar tu suscripción en cualquier momento sin tarifas de cancelación ni compromisos."
+        },
+        {
+          "question": "¿Los Expert Advisors son seguros?",
+          "answer": "Todos nuestros EAs pasan por pruebas rigurosas y son verificados por nuestro equipo técnico antes de ser disponibilizados."
+        },
+        {
+          "question": "¿Qué soporte técnico está disponible?",
+          "answer": "Ofrecemos soporte por email para todos los planes, soporte prioritario para el plan Profesional y soporte 24/7 para el plan Enterprise."
+        },
+        {
+          "question": "¿Puedo usar mi propia VPS?",
+          "answer": "Sí, puedes usar tu propia VPS o contratar una de nuestros planes. Ofrecemos descuentos para clientes del plan Enterprise."
+        }
+      ]
+    },
+    "conversar": {
+      "vps": "¿Tienes dudas sobre nuestros VPS? ¡Estamos aquí para ayudar!",
+      "eas": "¿Quieres saber más sobre nuestros Expert Advisors? ¡Háblanos!",
+      "plans": "¿Listo para comenzar? ¡Háblanos sobre los planes!"
+    },
+    "footerCta": {
+      "title": "¿Listo para Transformar tu Trading?",
+      "description": "Únete a miles de traders profesionales que ya están usando nuestra plataforma"
+    }
+  }
+}

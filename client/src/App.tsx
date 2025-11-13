@@ -1,0 +1,172 @@
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import './i18n/config';
+import LanguageSelector from './components/LanguageSelector';
+import NotFound from "@/pages/NotFound";
+import { Route, Switch } from "wouter";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { CurrencyProvider } from "./contexts/CurrencyContext";
+import { AppConfigProvider } from "./contexts/AppConfigContext";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import Admin from "./pages/Admin";
+import AdminSupport from "./pages/AdminSupport";
+import AdminPixels from "./pages/AdminPixels";
+import CompleteLandingEditor from "./pages/admin/LandingPageEditorFixed";
+import BugReports from "./pages/admin/BugReports";
+
+import ManagerDashboard from "./pages/ManagerDashboard";
+import Accounts from "./pages/Accounts";
+import Trades from "./pages/Trades";
+import Analytics from "./pages/Analytics";
+import CopyTrading from "./pages/CopyTrading";
+import Traders from "./pages/Traders";
+import WebSocketTest from "./pages/WebSocketTest";
+import Strategies from "./pages/Strategies";
+import Calendar from "./pages/Calendar";
+import Alerts from "./pages/Alerts";
+import Settings from "./pages/Settings";
+import Subscriptions from "./pages/Subscriptions";
+import MarketplaceVPS from "./pages/MarketplaceVPS";
+import MarketplaceEAs from "./pages/MarketplaceEAs";
+import EALicenses from "./pages/EALicenses";
+import ExpertAdvisors from "./pages/ExpertAdvisors";
+import ApiKeys from "./pages/ApiKeys";
+import VPS from "./pages/VPS";
+import MyVMs from "./pages/MyVMs";
+import Checkout from "./pages/Checkout";
+import CheckoutSuccess from "./pages/CheckoutSuccess";
+import CheckoutCancel from "./pages/CheckoutCancel";
+import LandingPage from "./pages/LandingPage";
+import { useAuth } from "./_core/hooks/useAuth";
+import { useEffect } from "react";
+import { useLocation } from "wouter";
+import { useQuery } from "@tanstack/react-query";
+import { initializePixels } from "./services/tracking";
+import { BugReportButton } from "./components/BugReportButton";
+
+
+function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
+  const { isAuthenticated, loading } = useAuth();
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      setLocation("/login");
+    }
+  }, [isAuthenticated, loading, setLocation]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  return <Component />;
+}
+
+function Router() {
+  return (
+    <Switch>
+      <Route path="/start" component={LandingPage} />
+      <Route path="/login" component={Login} />
+      <Route path="/forgot-password" component={ForgotPassword} />
+      <Route path="/reset-password" component={ResetPassword} />
+      <Route path="/">{() => <ProtectedRoute component={Home} />}</Route>
+      <Route path="/admin">{() => <ProtectedRoute component={Admin} />}</Route>
+      <Route path="/admin/support">{() => <ProtectedRoute component={AdminSupport} />}</Route>
+      <Route path="/admin/pixels">{() => <ProtectedRoute component={AdminPixels} />}</Route>
+      <Route path="/admin/landing-editor">{() => <ProtectedRoute component={CompleteLandingEditor} />}</Route>
+      <Route path="/admin/bug-reports">{() => <ProtectedRoute component={BugReports} />}</Route>
+
+      <Route path="/manager">{() => <ProtectedRoute component={ManagerDashboard} />}</Route>
+      <Route path="/accounts">{() => <ProtectedRoute component={Accounts} />}</Route>
+      <Route path="/trades">{() => <ProtectedRoute component={Trades} />}</Route>
+      <Route path="/analytics">{() => <ProtectedRoute component={Analytics} />}</Route>
+      <Route path="/copy-trading">{() => <ProtectedRoute component={CopyTrading} />}</Route>
+      <Route path="/traders">{() => <ProtectedRoute component={Traders} />}</Route>
+      <Route path="/websocket-test">{() => <ProtectedRoute component={WebSocketTest} />}</Route>
+      <Route path="/strategies">{() => <ProtectedRoute component={Strategies} />}</Route>
+      <Route path="/calendar">{() => <ProtectedRoute component={Calendar} />}</Route>
+      <Route path="/alerts">{() => <ProtectedRoute component={Alerts} />}</Route>
+      <Route path="/settings">{() => <ProtectedRoute component={Settings} />}</Route>
+      <Route path="/subscriptions">{() => <ProtectedRoute component={Subscriptions} />}</Route>
+      <Route path="/marketplace/vps">{() => <ProtectedRoute component={MarketplaceVPS} />}</Route>
+      <Route path="/marketplace/eas">{() => <ProtectedRoute component={MarketplaceEAs} />}</Route>
+      <Route path="/ea-licenses">{() => <ProtectedRoute component={EALicenses} />}</Route>
+      <Route path="/expert-advisors">{() => <ProtectedRoute component={ExpertAdvisors} />}</Route>
+      <Route path="/api-keys">{() => <ProtectedRoute component={ApiKeys} />}</Route>
+      <Route path="/vps">{() => <ProtectedRoute component={VPS} />}</Route>
+      <Route path="/my-vms">{() => <ProtectedRoute component={MyVMs} />}</Route>
+      <Route path="/checkout">{() => <ProtectedRoute component={Checkout} />}</Route>
+      <Route path="/checkout/success" component={CheckoutSuccess} />
+      <Route path="/checkout/cancel" component={CheckoutCancel} />
+      <Route path="/404" component={NotFound} />
+      <Route component={NotFound} />
+    </Switch>
+  );
+}
+
+function App() {
+  const [location] = useLocation();
+  const { isAuthenticated } = useAuth();
+  
+  // Páginas públicas onde o LanguageSelector não deve ser renderizado
+  const publicPages = ['/login', '/register', '/forgot-password', '/reset-password', '/start'];
+  const isPublicPage = publicPages.includes(location);
+
+  // Buscar pixels da landing page (admin)
+  const { data: landingPixels } = useQuery({
+    queryKey: ['/api/landing-page-pixels'],
+  });
+
+  // Inicializar pixels quando forem carregados
+  useEffect(() => {
+    if (landingPixels) {
+      initializePixels({
+        facebookPixelId: landingPixels.facebookPixelId,
+        facebookPixelEnabled: landingPixels.facebookPixelEnabled,
+        googleAdsId: landingPixels.googleAdsId,
+        googleAdsEnabled: landingPixels.googleAdsEnabled,
+        taboolaPixelId: landingPixels.taboolaPixelId,
+        taboolaPixelEnabled: landingPixels.taboolaPixelEnabled,
+        kwaiPixelId: landingPixels.kwaiPixelId,
+        kwaiPixelEnabled: landingPixels.kwaiPixelEnabled,
+        tiktokPixelId: landingPixels.tiktokPixelId,
+        tiktokPixelEnabled: landingPixels.tiktokPixelEnabled,
+      });
+    }
+  }, [landingPixels]);
+  
+  return (
+    <ErrorBoundary>
+      <ThemeProvider defaultTheme="dark" switchable={true}>
+        <AppConfigProvider>
+          <CurrencyProvider>
+          <TooltipProvider>
+            <Toaster />
+            {!isPublicPage && <LanguageSelector />}
+            {isAuthenticated && <BugReportButton />}
+            <Router />
+          </TooltipProvider>
+          </CurrencyProvider>
+        </AppConfigProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
+}
+
+export default App;
+

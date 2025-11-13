@@ -1,0 +1,245 @@
+/**
+ * Serviço para buscar eventos do calendário econômico do Forex Factory
+ * Baseado na lógica do EA BlackGPT
+ */
+
+interface ForexEvent {
+  date: string;
+  time: string;
+  country: string;
+  impact: string;
+  title: string;
+  forecast?: string;
+  previous?: string;
+}
+
+let cachedEvents: ForexEvent[] = [];
+let lastFetch = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos - atualização frequente
+
+export async function getForexFactoryEvents(): Promise<ForexEvent[]> {
+  // Retorna cache se ainda válido
+  if (cachedEvents.length > 0 && Date.now() - lastFetch < CACHE_DURATION) {
+    console.log(`[Forex Calendar] Returning ${cachedEvents.length} cached events`);
+    return cachedEvents;
+  }
+
+  try {
+    // Buscar de múltiplos XMLs para ter mais eventos
+    // Adicionando mais fontes para garantir cobertura completa
+    const urls = [
+      'https://nfs.faireconomy.media/ff_calendar_thisweek.xml',
+      // nextweek.xml não existe mais no Forex Factory
+    ];
+    
+    console.log('[Forex Calendar] Fetching from multiple sources...');
+    const allEvents: ForexEvent[] = [];
+    const eventKeys = new Set<string>(); // Para evitar duplicatas
+    
+    for (const url of urls) {
+      try {
+        console.log(`[Forex Calendar] Fetching ${url}`);
+        const response = await fetch(url, {
+          headers: {
+            'User-Agent': 'Mozilla/5.0',
+          },
+        });
+        
+        if (!response.ok) {
+          console.error(`[Forex Calendar] HTTP error from ${url}: ${response.status}`);
+          continue;
+        }
+        
+        const xmlData = await response.text();
+        
+        if (xmlData.length < 100) {
+          console.error(`[Forex Calendar] Insufficient data from ${url}`);
+          continue;
+        }
+
+        console.log(`[Forex Calendar] Data received from ${url}: ${xmlData.length} characters`);
+        const events = processNewsXML(xmlData);
+        
+        // Adicionar eventos evitando duplicatas
+        for (const event of events) {
+          const key = `${event.date}_${event.time}_${event.title}`;
+          if (!eventKeys.has(key)) {
+            eventKeys.add(key);
+            allEvents.push(event);
+          }
+        }
+        
+        console.log(`[Forex Calendar] Parsed ${events.length} events from ${url}`);
+      } catch (error) {
+        console.error(`[Forex Calendar] Error fetching ${url}:`, error);
+      }
+    }
+    
+    // Ordenar todos os eventos por data
+    allEvents.sort((a, b) => {
+      const dateA = new Date(a.date + ' ' + a.time);
+      const dateB = new Date(b.date + ' ' + b.time);
+      return dateA.getTime() - dateB.getTime();
+    });
+    
+    // Armazenar TODOS os eventos (passados e futuros, sem limite)
+    cachedEvents = allEvents;
+    lastFetch = Date.now();
+    
+    console.log(`[Forex Calendar] Successfully parsed and cached ${cachedEvents.length} events from all sources`);
+    return cachedEvents;
+  } catch (error) {
+    console.error('[Forex Calendar] Error fetching events:', error);
+    return cachedEvents; // Retorna cache antigo se houver erro
+  }
+}
+
+/**
+ * Extrai valor de uma tag XML, removendo CDATA e espaços
+ * Lógica idêntica ao EA BlackGPT
+ */
+function extractXMLValue(xml: string, tag: string): string {
+  const openTag = `<${tag}>`;
+  const closeTag = `</${tag}>`;
+  
+  let start = xml.indexOf(openTag);
+  if (start === -1) return '';
+  
+  start += openTag.length;
+  const end = xml.indexOf(closeTag, start);
+  if (end === -1) return '';
+  
+  let value = xml.substring(start, end);
+  
+  // Remover tags CDATA se existirem
+  const cdataStart = value.indexOf('<![CDATA[');
+  if (cdataStart >= 0) {
+    const cdataEnd = value.indexOf(']]>');
+    if (cdataEnd >= 0) {
+      value = value.substring(cdataStart + 9, cdataEnd);
+    }
+  }
+  
+  // Remover espaços em branco no início e fim
+  return value.trim();
+}
+
+/**
+ * Processa XML das notícias
+ * Lógica idêntica ao EA BlackGPT: ProcessNewsXML()
+ */
+function processNewsXML(xmlData: string): ForexEvent[] {
+  console.log('[Forex Calendar] Processing XML...');
+  console.log(`[Forex Calendar] XML size: ${xmlData.length} characters`);
+  
+  const events: ForexEvent[] = [];
+  const now = new Date();
+  
+  let eventStartPos = 0;
+  let eventsProcessed = 0;
+  let totalEventsFound = 0;
+  
+  // Procurar por eventos no XML (mesma lógica do EA)
+  // Removendo limite de 100 eventos para pegar todos
+  while (eventStartPos < xmlData.length) {
+    // Encontrar próximo evento
+    const eventStart = xmlData.indexOf('<event>', eventStartPos);
+    if (eventStart === -1) break;
+    
+    const eventEnd = xmlData.indexOf('</event>', eventStart);
+    if (eventEnd === -1) break;
+    
+    totalEventsFound++;
+    
+    // Extrair dados do evento
+    const eventXML = xmlData.substring(eventStart, eventEnd);
+    
+    // Extrair campos (mesma ordem do EA)
+    const title = extractXMLValue(eventXML, 'title');
+    const country = extractXMLValue(eventXML, 'country');
+    const impact = extractXMLValue(eventXML, 'impact');
+    const date = extractXMLValue(eventXML, 'date');
+    const time = extractXMLValue(eventXML, 'time');
+    const forecast = extractXMLValue(eventXML, 'forecast');
+    const previous = extractXMLValue(eventXML, 'previous');
+    
+    // Debug dos primeiros 3 eventos (como no EA)
+    if (totalEventsFound <= 3) {
+      console.log(`[Forex Calendar] Event ${totalEventsFound}:`);
+      console.log(`  Title: ${title}`);
+      console.log(`  Country: ${country}`);
+      console.log(`  Impact: ${impact}`);
+      console.log(`  Date: ${date}`);
+      console.log(`  Time: ${time}`);
+    }
+    
+    // Converter data/hora
+    const eventTime = convertNewsDateTime(date, time);
+    
+    if (totalEventsFound <= 3) {
+      console.log(`  DateTime converted: ${eventTime}`);
+    }
+    
+    // Incluir TODOS os eventos (passados e futuros)
+    // Validar que o evento tem dados mínimos necessários
+    if (title && country && date && impact) {
+      events.push({
+        title,
+        country,
+        impact,
+        date: eventTime.toISOString().split('T')[0],
+        time: time || '12:00am', // Tempo padrão se não especificado
+        forecast: forecast || undefined,
+        previous: previous || undefined,
+      });
+      eventsProcessed++;
+    }
+    
+    eventStartPos = eventEnd + 8;
+  }
+  
+  // Ordenar eventos por data (como no EA)
+  events.sort((a, b) => {
+    const dateA = new Date(a.date + ' ' + a.time);
+    const dateB = new Date(b.date + ' ' + b.time);
+    return dateA.getTime() - dateB.getTime();
+  });
+  
+  console.log(`[Forex Calendar] Total events in XML: ${totalEventsFound}`);
+  console.log(`[Forex Calendar] Processing complete: ${eventsProcessed} current and future events found`);
+  
+  return events;
+}
+
+/**
+ * Converte data e hora do formato do Forex Factory para Date
+ * Formato: date = "10-23-2025", time = "9:00am"
+ */
+function convertNewsDateTime(dateStr: string, timeStr: string): Date {
+  // Parse date (MM-DD-YYYY)
+  const [month, day, year] = dateStr.split('-').map(Number);
+  
+  // Parse time (h:mm[am|pm])
+  let hours = 0;
+  let minutes = 0;
+  
+  if (timeStr) {
+    const isPM = timeStr.toLowerCase().includes('pm');
+    const isAM = timeStr.toLowerCase().includes('am');
+    const timeOnly = timeStr.replace(/[ap]m/gi, '').trim();
+    const [h, m] = timeOnly.split(':').map(Number);
+    
+    hours = h;
+    minutes = m || 0;
+    
+    // Converter para 24h
+    if (isPM && hours !== 12) {
+      hours += 12;
+    } else if (isAM && hours === 12) {
+      hours = 0;
+    }
+  }
+  
+  return new Date(year, month - 1, day, hours, minutes, 0);
+}
+

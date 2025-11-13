@@ -1,0 +1,394 @@
+import { Router, Request, Response } from "express";
+import { nowPaymentsService } from "../services/nowpayments";
+import crypto from "crypto";
+import bcrypt from "bcryptjs";
+import { getDb } from "../db";
+import { users, userPurchases, userSubscriptions, subscriptionPlans } from "../../drizzle/schema";
+import { eq } from "drizzle-orm";
+
+const router = Router();
+
+/**
+ * Gera senha aleatória segura
+ */
+function generateRandomPassword(length: number = 12): string {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return password;
+}
+
+/**
+ * POST /api/checkout/create-payment
+ * Create payment for landing page (simplified)
+ */
+router.post("/create-payment", async (req: Request, res: Response) => {
+  try {
+    const {
+      price_amount,
+      price_currency,
+      order_description,
+    } = req.body;
+
+    if (!price_amount || !price_currency || !order_description) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Create invoice with NOWPayments (hosted payment page)
+    const invoice = await nowPaymentsService.createInvoice({
+      price_amount,
+      price_currency,
+      order_id: `order_${Date.now()}`,
+      order_description,
+      ipn_callback_url: `${process.env.BASE_URL || "https://sentrapartners.com"}/api/checkout/webhook`,
+      success_url: `${process.env.BASE_URL || "https://sentrapartners.com"}/`,
+      cancel_url: `${process.env.BASE_URL || "https://sentrapartners.com"}/start`,
+    });
+
+    console.log("[Invoice Created]", {
+      invoiceId: invoice.id,
+      description: order_description,
+      amount: price_amount,
+      url: invoice.invoice_url,
+    });
+
+    return res.json({
+      success: true,
+      invoice_id: invoice.id,
+      payment_url: invoice.invoice_url,
+    });
+  } catch (error: any) {
+    console.error("[Create Payment Error]", error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/checkout/create
+ * Create a new payment/invoice
+ */
+router.post("/create", async (req: Request, res: Response) => {
+  try {
+    const {
+      productName,
+      productPrice, // in USD
+      customerEmail,
+      customerData, // { accountNumber, eaType, platform, etc }
+    } = req.body;
+
+    if (!productName || !productPrice || !customerEmail) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Create invoice with NOWPayments (hosted payment page)
+    const invoice = await nowPaymentsService.createInvoice({
+      price_amount: productPrice,
+      price_currency: "usd",
+      order_id: `order_${Date.now()}`,
+      order_description: `${productName} - ${customerEmail}`,
+      ipn_callback_url: `${process.env.BASE_URL || "https://sentrapartners.com"}/api/checkout/webhook`,
+      success_url: `${process.env.BASE_URL || "https://sentrapartners.com"}/`,
+      cancel_url: `${process.env.BASE_URL || "https://sentrapartners.com"}/subscriptions`,
+    });
+
+    // Log invoice for manual processing
+    console.log("[Invoice Created]", {
+      invoiceId: invoice.id,
+      productName,
+      customerEmail,
+      customerData,
+      amount: productPrice,
+      url: invoice.invoice_url,
+    });
+
+    return res.json({
+      success: true,
+      invoiceId: invoice.id,
+      paymentUrl: invoice.invoice_url, // NOWPayments invoice page
+    });
+  } catch (error: any) {
+    console.error("[Checkout Error]", error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/checkout/webhook
+ * Handle NOWPayments IPN webhook
+ */
+router.post("/webhook", async (req: Request, res: Response) => {
+  try {
+    const signature = req.headers["x-nowpayments-sig"] as string;
+    const payload = JSON.stringify(req.body);
+
+    // Verify signature
+    const expectedSignature = crypto
+      .createHmac("sha512", process.env.NOWPAYMENTS_IPN_SECRET || "")
+      .update(payload)
+      .digest("hex");
+
+    if (signature !== expectedSignature) {
+      console.error("[Webhook] Invalid signature");
+      return res.status(401).json({ error: "Invalid signature" });
+    }
+
+    const {
+      payment_id,
+      payment_status,
+      pay_amount,
+      pay_currency,
+      order_id,
+      order_description,
+    } = req.body;
+
+    console.log("[Webhook Received]", {
+      paymentId: payment_id,
+      status: payment_status,
+      amount: pay_amount,
+      currency: pay_currency,
+      orderId: order_id,
+      description: order_description,
+    });
+
+    // If payment is confirmed, create user automatically
+    if (payment_status === "finished") {
+      console.log("✅ [PAYMENT CONFIRMED]:", order_description);
+      
+      // Enviar notificação para admins sobre nova compra
+      const { sendAdminNewPurchase } = await import("../services/telegram-helper");
+      
+      // Extrair dados do pagamento
+      const productName = order_description.split(' - ')[0] || "Produto";
+      const customerEmail = order_description.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/)?.[1] || "N/A";
+      
+      // Enviar notificação (não bloquear o webhook)
+      sendAdminNewPurchase({
+        userName: customerEmail.split('@')[0],
+        userEmail: customerEmail,
+        productName,
+        amount: parseFloat(pay_amount) || 0,
+        currency: pay_currency?.toUpperCase() || "USD",
+        paymentMethod: "Crypto"
+      }).catch(err => {
+        console.error("❌ [ADMIN NOTIFICATION ERROR]:", err);
+      });
+      
+      if (customerEmail) {
+        try {
+          // Check if user already exists
+          const db = await getDb();
+          if (!db) throw new Error("Database not available");
+          const existingUser = await db.select().from(users).where(eq(users.email, customerEmail)).limit(1);
+          
+          if (existingUser.length === 0) {
+            // Generate random password
+            const randomPassword = generateRandomPassword();
+            const hashedPassword = await bcrypt.hash(randomPassword, 10);
+            
+            // Create user
+            const [newUser] = await db.insert(users).values({
+              email: customerEmail,
+              password: hashedPassword,
+              name: customerEmail.split('@')[0], // Use email prefix as name
+              authMethod: "email",
+              role: "client",
+              isActive: true,
+            });
+            
+            console.log("✅ [USER CREATED]", {
+              userId: newUser.insertId,
+              email: customerEmail,
+              password: randomPassword,
+            });
+            
+            // === NOVA FUNCIONALIDADE: CRIAR SUBSCRIPTION COM LIMITS ===
+            try {
+              // Buscar o plano correspondente pelo nome
+              const [planData] = await db
+                .select()
+                .from(subscriptionPlans)
+                .where(eq(subscriptionPlans.name, productName))
+                .limit(1);
+
+              if (planData) {
+                // Calcular datas de início e fim da assinatura
+                const startDate = new Date();
+                const endDate = new Date();
+                
+                // Definir período baseado no preço do plano
+                const priceInCents = parseFloat(pay_amount) * 100;
+                let subscriptionPeriod = 1; // padrão: 1 mês
+                
+                if (planData.priceQuarterly && Math.abs(priceInCents - planData.priceQuarterly) < 500) {
+                  subscriptionPeriod = 3; // 3 meses
+                } else if (planData.priceSemestral && Math.abs(priceInCents - planData.priceSemestral) < 500) {
+                  subscriptionPeriod = 6; // 6 meses
+                } else if (planData.priceYearly && Math.abs(priceInCents - planData.priceYearly) < 500) {
+                  subscriptionPeriod = 12; // 12 meses
+                } else if (planData.priceLifetime && Math.abs(priceInCents - planData.priceLifetime) < 500) {
+                  subscriptionPeriod = 999; // vitalício
+                }
+                
+                endDate.setMonth(endDate.getMonth() + subscriptionPeriod);
+
+                // Criar subscription com todos os limites do plano
+                await db.insert(userSubscriptions).values({
+                  userId: newUser.insertId,
+                  planId: planData.id,
+                  price: priceInCents,
+                  status: "active",
+                  startDate,
+                  endDate,
+                  autoRenew: true,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                });
+
+                console.log("✅ [SUBSCRIPTION CREATED]", {
+                  userId: newUser.insertId,
+                  planName: productName,
+                  planLimits: {
+                    maxAccounts: planData.maxAccounts,
+                    copyTradingEnabled: planData.copyTradingEnabled,
+                    advancedAnalyticsEnabled: planData.advancedAnalyticsEnabled,
+                    freeVpsEnabled: planData.freeVpsEnabled,
+                    prioritySupport: planData.prioritySupport,
+                  },
+                  period: `${subscriptionPeriod} month(s)`,
+                });
+
+                // Notificação específica sobre aplicação de limites
+                const { sendAdminNewSubscription } = await import("../services/telegram-helper");
+                sendAdminNewSubscription({
+                  userName: customerEmail.split('@')[0],
+                  userEmail: customerEmail,
+                  planName: productName,
+                  amount: parseFloat(pay_amount) || 0,
+                  currency: pay_currency?.toUpperCase() || "USD",
+                  startDate: startDate.toLocaleDateString('pt-BR'),
+                  limits: `Máx ${planData.maxAccounts} conta(s) • ${planData.copyTradingEnabled ? 'Copy Trading ✓' : 'Copy Trading ✗'}`
+                }).catch(err => {
+                  console.error("❌ [ADMIN SUBSCRIPTION NOTIFICATION ERROR]:", err);
+                });
+
+              } else {
+                console.warn("⚠️ [PLAN NOT FOUND]", productName, "- Limits não foram aplicados");
+              }
+            } catch (subscriptionError) {
+              console.error("❌ [SUBSCRIPTION CREATION ERROR]", subscriptionError);
+              // Não bloquear o processo por erro na subscription
+            }
+            
+            // Enviar email de boas-vindas com credenciais
+            const { emailService } = await import("../services/email-service");
+            emailService.sendWelcomeEmail({
+              email: customerEmail,
+              name: customerEmail.split('@')[0],
+              password: randomPassword,
+              planName: productName
+            }).catch(err => {
+              console.error("❌ [WELCOME EMAIL ERROR]:", err);
+            });
+            
+            // Enviar email de confirmação de compra
+            emailService.sendPurchaseConfirmationEmail({
+              email: customerEmail,
+              name: customerEmail.split('@')[0],
+              productName,
+              amount: parseFloat(pay_amount) || 0,
+              currency: pay_currency?.toUpperCase() || "USD",
+              orderId: order_id
+            }).catch(err => {
+              console.error("❌ [PURCHASE EMAIL ERROR]:", err);
+            });
+            
+            // Notificação de nova assinatura para admins
+            const { sendAdminNewSubscription } = await import("../services/telegram-helper");
+            sendAdminNewSubscription({
+              userName: customerEmail.split('@')[0],
+              userEmail: customerEmail,
+              planName: productName,
+              amount: parseFloat(pay_amount) || 0,
+              currency: pay_currency?.toUpperCase() || "USD",
+              startDate: new Date().toLocaleDateString('pt-BR')
+            }).catch(err => {
+              console.error("❌ [ADMIN SUBSCRIPTION NOTIFICATION ERROR]:", err);
+            });
+            
+            // TODO: Send email with credentials
+            // For now, password is logged above
+          } else {
+            console.log("ℹ️ [USER EXISTS]", customerEmail);
+            
+            // Restaurar dados se usuário já existe e está renovando assinatura
+            const { restoreAccountData } = await import('../services/subscription-data-manager');
+            const userId = existingUser[0].id;
+            await restoreAccountData(userId);
+            console.log("✅ [DADOS RESTAURADOS]", customerEmail);
+            
+            // Enviar email de renovação
+            const { emailService } = await import("../services/email-service");
+            const expiryDate = new Date();
+            expiryDate.setMonth(expiryDate.getMonth() + 1);
+            emailService.sendRenewalEmail({
+              email: customerEmail,
+              name: existingUser[0].name || customerEmail.split('@')[0],
+              planName: productName,
+              amount: parseFloat(pay_amount) || 0,
+              currency: pay_currency?.toUpperCase() || "USD",
+              expiryDate: expiryDate.toLocaleDateString('pt-BR')
+            }).catch(err => {
+              console.error("❌ [RENEWAL EMAIL ERROR]:", err);
+            });
+            
+            // Notificação de renovação para admins
+            const { sendAdminSubscriptionRenewed } = await import("../services/telegram-helper");
+            sendAdminSubscriptionRenewed({
+              userName: existingUser[0].name || customerEmail.split('@')[0],
+              userEmail: customerEmail,
+              planName: productName,
+              amount: parseFloat(pay_amount) || 0,
+              currency: pay_currency?.toUpperCase() || "USD",
+              renewalDate: new Date().toLocaleDateString('pt-BR')
+            }).catch(err => {
+              console.error("❌ [ADMIN RENEWAL NOTIFICATION ERROR]:", err);
+            });
+          }
+        } catch (error: any) {
+          console.error("❌ [USER CREATION ERROR]", error.message);
+        }
+      }
+    }
+
+    return res.json({ success: true });
+  } catch (error: any) {
+    console.error("[Webhook Error]", error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * GET /api/checkout/status/:paymentId
+ * Check payment status
+ */
+router.get("/status/:paymentId", async (req: Request, res: Response) => {
+  try {
+    const { paymentId } = req.params;
+    const status = await nowPaymentsService.getPaymentStatus(paymentId);
+
+    return res.json({
+      success: true,
+      status: status.payment_status,
+      amount: status.pay_amount,
+      currency: status.pay_currency,
+    });
+  } catch (error: any) {
+    console.error("[Status Check Error]", error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+export default router;
+

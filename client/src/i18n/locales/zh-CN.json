@@ -1,0 +1,284 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "search": "搜索",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "confirm": "确认",
+    "back": "返回",
+    "next": "下一步",
+    "finish": "完成",
+    "close": "关闭"
+  },
+  "nav": {
+    "dashboard": "仪表盘",
+    "accounts": "账户",
+    "trades": "交易",
+    "analytics": "分析",
+    "copyTrading": "跟单交易",
+    "traders": "交易员",
+    "strategies": "策略",
+    "calendar": "日历",
+    "alerts": "提醒",
+    "subscriptions": "订阅",
+    "vps": "VPS",
+    "myVMs": "我的虚拟机",
+    "expertAdvisors": "专家顾问",
+    "settings": "设置",
+    "admin": "管理员",
+    "support": "支持聊天"
+  },
+  "alerts": {
+    "title": "提醒和通知",
+    "subtitle": "配置推送通知并管理系统提醒",
+    "config": "提醒配置",
+    "drawdown": "回撤提醒",
+    "drawdownDesc": "当回撤达到限制时接收通知",
+    "trades": "交易提醒",
+    "tradesDesc": "关于交易开仓和平仓的通知",
+    "connection": "连接提醒",
+    "connectionDesc": "当与MT4/MT5连接丢失时的警告",
+    "drawdownLimit": "回撤限制",
+    "drawdownLimitDesc": "提醒前的最大回撤百分比",
+    "ntfyTitle": "ntfy.sh通知（安卓 + iPhone）",
+    "ntfyDesc": "使用免费ntfy应用在手机（安卓或iPhone）上接收即时推送通知。",
+    "yourTopic": "您的唯一主题：",
+    "howToConfig": "如何配置：",
+    "step1": "1. 在手机上安装“ntfy”应用",
+    "step2": "2. 打开应用并点击“+”",
+    "step3": "3. 输入上述主题",
+    "step4": "4. 完成！您将在这里接收通知",
+    "enableNotifications": "启用通知",
+    "enableNotificationsDesc": "启用所有ntfy通知",
+    "dailySummary": "每日摘要",
+    "dailySummaryDesc": "当天的利润、交易和胜率",
+    "weeklySummary": "每周摘要",
+    "weeklySummaryDesc": "周六：周日至周五摘要",
+    "time": "时间：",
+    "testDaily": "测试每日摘要",
+    "testWeekly": "测试每周摘要",
+    "sendTest": "发送测试通知",
+    "saveSettings": "保存设置",
+    "history": "提醒历史",
+    "noAlerts": "无提醒记录",
+    "enabled": "已启用",
+    "disabled": "已禁用"
+  },
+  "settings": {
+    "title": "设置",
+    "subtitle": "管理您的偏好和提醒",
+    "loginRequired": "请登录以访问设置",
+    "alertsNotifications": "提醒和通知",
+    "general": "常规偏好",
+    "language": "语言",
+    "languageDesc": "界面语言",
+    "timezone": "时区",
+    "timezoneDesc": "日期显示的时区",
+    "currency": "货币",
+    "currencyDesc": "默认显示货币",
+    "saveChanges": "保存更改",
+    "discardChanges": "放弃更改"
+  },
+  "landing": {
+    "nav": {
+      "home": "首页",
+      "features": "功能",
+      "howItWorks": "工作原理",
+      "plans": "方案"
+    },
+    "cta": {
+      "getStarted": "立即开始"
+    },
+    "hero": {
+      "badge": "跟单交易 3.0 现已推出",
+      "title": {
+        "part1": "您一直想知道的",
+        "part2": "关于交易的一切"
+      },
+      "subtitle": "Sentra Partners 展示重要的指标和行为，通过跟单交易、专家顾问和高级分析带来利润。",
+      "dashboard": {
+        "totalProfit": "总利润",
+        "trades": "交易",
+        "winRate": "胜率",
+        "profitFactor": "盈利因子",
+        "caption": "实时交易仪表盘"
+      }
+    },
+    "vps": {
+      "title": "VPS 交易",
+      "subtitle": "24/7 跟单交易专用服务器",
+      "cta": "订购 VPS",
+      "plans": {
+        "starter": {
+          "title": "VPS 入门版",
+          "specs": {
+            "ram": "1GB 内存",
+            "cpu": "1 个 CPU 核心",
+            "storage": "10GB SSD",
+            "support": "24/7 支持"
+          }
+        },
+        "professional": {
+          "title": "VPS 专业版",
+          "specs": {
+            "ram": "2GB 内存",
+            "cpu": "2 个 CPU 核心",
+            "storage": "20GB SSD",
+            "backup": "自动备份"
+          }
+        },
+        "enterprise": {
+          "title": "VPS 企业版",
+          "specs": {
+            "ram": "4GB 内存",
+            "cpu": "4 个 CPU 核心",
+            "storage": "40GB SSD",
+            "monitoring": "高级监控"
+          }
+        }
+      }
+    },
+    "eas": {
+      "title": "专业专家顾问",
+      "subtitle": "测试和优化的交易机器人",
+      "cta": "购买 EA",
+      "plans": {
+        "oneTimePayment": "一次性付款",
+        "scalpPro": {
+          "title": "剥头皮专业版",
+          "stats": "胜率: 76% | 时间框架: M1-M5",
+          "features": {
+            "0": "自动化剥头皮",
+            "1": "低风险",
+            "2": "ROI 15%"
+          }
+        },
+        "trendMaster": {
+          "title": "趋势大师",
+          "stats": "胜率: 82% | 时间框架: H1-H4",
+          "features": {
+            "0": "趋势分析",
+            "1": "智能止损",
+            "2": "ROI 22%"
+          }
+        },
+        "gridBot": {
+          "title": "网格机器人",
+          "stats": "胜率: 79% | 时间框架: H1-D1",
+          "features": {
+            "0": "网格策略",
+            "1": "横盘市场",
+            "2": "ROI 18%"
+          }
+        }
+      }
+    },
+    "plans": {
+      "title": "订阅方案",
+      "subtitle": "完整访问跟单交易平台",
+      "cta": "选择方案",
+      "popularBadge": "最受欢迎",
+      "basic": {
+        "title": "基础版",
+        "features": {
+          "0": "跟单交易（1个主账户）",
+          "1": "基础仪表盘",
+          "2": "邮件支持",
+          "3": "每月更新"
+        }
+      },
+      "professional": {
+        "title": "专业版",
+        "features": {
+          "0": "跟单交易（3个主账户）",
+          "1": "高级仪表盘",
+          "2": "优先支持",
+          "3": "每周分析",
+          "4": "EA折扣"
+        }
+      },
+      "enterprise": {
+        "title": "企业版",
+        "features": {
+          "0": "专业版所有内容",
+          "1": "包含VPS入门版",
+          "2": "每月1小时咨询",
+          "3": "定制EA",
+          "4": "API访问"
+        }
+      }
+    },
+    "footer": {
+      "copyright": "版权所有。",
+      "language": "语言",
+      "currency": "货币",
+      "perMonth": "每月"
+    },
+    "stats": {
+      "tradesJournaled": "已记录交易",
+      "backtestedSessions": "回测会话", 
+      "sharedOperations": "共享操作",
+      "tradersOnBoard": "平台交易员"
+    },
+    "copyTrading": {
+      "title": "强大且自动化的跟单交易",
+      "description": "您专注于交易，我们专注于帮助您改善。通过自动化跟单交易，我们为您完成繁重工作。"
+    },
+    "analytics": {
+      "title": "分析您的交易统计",
+      "description": "了解您犯了什么错误，是否比计划承担了更多风险，以及每笔交易的更多具体统计信息。"
+    },
+    "resources": {
+      "title": "为什么选择Sentra Partners？",
+      "subtitle": "您掌握市场所需的一切"
+    },
+    "howItWorks": {
+      "title": "使用Sentra Partners，交易变得简单",
+      "subtitle": "请查看下面的逐步指南"
+    },
+    "results": {
+      "title": "我们的成果",
+      "subtitle": "查看我们的一些数据"
+    },
+    "faq": {
+      "title": "常见问题",
+      "subtitle": "通过关于Sentra Partners的最常见问题消除您的疑虑",
+      "items": [
+        {
+          "question": "跟单交易如何运作？",
+          "answer": "跟单交易允许您自动复制专业交易者的操作，在您自己的账户中复制他们的策略。"
+        },
+        {
+          "question": "我可以随时取消订阅吗？",
+          "answer": "是的，您可以随时取消订阅，无需支付取消费用或承诺。"
+        },
+        {
+          "question": "专家顾问安全吗？",
+          "answer": "我们所有的EA都经过严格测试，并在发布前由我们的技术团队进行验证。"
+        },
+        {
+          "question": "提供什么技术支态？",
+          "answer": "我们为所有计划提供邮件支持，为专业计划提供优先支持，为企业计划提供24/7支持。"
+        },
+        {
+          "question": "我可以使用自己的VPS吗？",
+          "answer": "是的，您可以使用自己的VPS或购买我们的计划之一。我们为企业计划客户提供折扣。"
+        }
+      ]
+    },
+    "conversar": {
+      "vps": "对我们的VPS有疑问？我们在这里帮助您！",
+      "eas": "想了解更多关于我们的专家顾问？与我们交谈！",
+      "plans": "准备开始？与我们谈论计划！"
+    },
+    "footerCta": {
+      "title": "准备好改变您的交易了吗？",
+      "description": "加入数千名已经在使用我们平台的专业交易员"
+    }
+  }
+}

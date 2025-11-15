@@ -1,15 +1,15 @@
-import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import fs from "node:fs";
 import path from "path";
 import { defineConfig } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const plugins = [react(), tailwindcss(), vitePluginManusRuntime()];
 
-
+const plugins = [
+  react(),
+  vitePluginManusRuntime()
+];
 
 export default defineConfig({
   plugins,
